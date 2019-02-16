@@ -4,16 +4,13 @@ require 'pry'
 # Given a hash with numeric values, return the key for the smallest value
 
 def key_for_min_value(name_hash)
-  # code goes here
+  #set these default values, so if hash is empty, returning min_key returns nil
   min_key = nil
   min_value = nil
-  name_hash.each do |k, v|
-    if min_value == nil
-      min_key = k
-      min_value = v
-    elsif min_value > v
-      min_key = k
-      min_value = v
+  name_hash.each do |current_key, current_value|
+    if min_value == nil || min_value > current_value
+      min_value = current_value
+      min_key = current_key
     end
   end
   min_key
@@ -23,6 +20,7 @@ end
 #
 #
 #
+# def key_for_min_value(name_hash)
 #   if name_hash.length < 1
 #     nil
 #   end
@@ -54,7 +52,7 @@ end
 #   #if min value from array is a value in original hash, return that value's key
 #   name_hash.each do |hash|
 #     if values[0] == hash[1]
-#       hash[0]
+#       hash[0] # breaks here.
 #     end
 #   end
 #   binding.pry
